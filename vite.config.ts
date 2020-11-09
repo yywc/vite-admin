@@ -17,7 +17,13 @@ export default {
     factory: 'h',
     fragment: 'Fragment',
   },
-  alias: {
-    '/@/': resolve(__dirname, 'src'),
-  },
+  resolvers: [
+    {
+      alias(path: string) {
+        if (path.startsWith('@/')) {
+          return path.replace('@/', '/src/')
+        }
+      },
+    },
+  ],
 }

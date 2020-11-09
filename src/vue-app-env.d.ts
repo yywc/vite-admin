@@ -53,3 +53,10 @@ declare module '*.module.less' {
   const classes: { readonly [key: string]: string }
   export default classes
 }
+
+declare module '*.vue' {
+  import { defineComponent } from 'vue'
+
+  const component: ReturnType<typeof defineComponent>
+  export default component
+}

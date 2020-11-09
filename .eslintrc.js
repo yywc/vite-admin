@@ -1,11 +1,14 @@
 module.exports = {
   root: true,
   parser: 'vue-eslint-parser',
+  env: {
+    es6: true,
+    node: true,
+  },
   parserOptions: {
-    tsconfigRootDir: __dirname,
+    parser: '@typescript-eslint/parser',
     project: ['./tsconfig.json'],
     extraFileExtensions: ['.vue'],
-    parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
@@ -22,8 +25,17 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
   plugins: ['@typescript-eslint', 'prettier'],
+  settings: {
+    'import/resolver': {
+      'eslint-import-resolver-custom-alias': {
+        alias: {
+          '@': './src',
+        },
+        extensions: ['.ts', '.tsx', '.vue'],
+      },
+    },
+  },
   rules: {
     'prettier/prettier': 'error',
-    'import/no-absolute-path': 'off',
   },
 }
